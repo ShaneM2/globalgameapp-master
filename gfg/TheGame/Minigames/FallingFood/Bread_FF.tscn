@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Minigames/FallingFood/Food_FF.gd" type="Script" id=1]
+[ext_resource path="res://Minigames/FallingFood/Bread.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 22.2069, 22.2774 )
+
+[node name="Food_FF" type="RigidBody2D"]
+position = Vector2( 517.448, 95.7527 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+food_type = "Carb"
+
+[node name="Food_Sprite_FF" type="Sprite" parent="."]
+position = Vector2( -0.722656, 2.53113 )
+scale = Vector2( 0.099203, 0.0900946 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -19.8432, 2.6597 )
+shape = SubResource( 1 )

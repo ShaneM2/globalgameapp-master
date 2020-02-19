@@ -1,0 +1,137 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Minigames/FallingFood/Main_FF.gd" type="Script" id=1]
+[ext_resource path="res://Minigames/FallingFood/Apple_FF.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Minigames/FallingFood/Carrot_FF.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Minigames/FallingFood/Chicken_FF.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Minigames/FallingFood/Potato_FF.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Minigames/FallingFood/Bread_FF.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Minigames/FallingFood/Broc_FF.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Minigames/FallingFood/Cheese_FF.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Minigames/FallingFood/Egg_FF.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Minigames/FallingFood/Fish_FF.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Minigames/FallingFood/Orange_FF.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Minigames/FallingFood/Kitchen.png" type="Texture" id=12]
+[ext_resource path="res://Minigames/FallingFood/Player_FF.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Minigames/FallingFood/Ground_FF.gd" type="Script" id=14]
+[ext_resource path="res://Minigames/timer_label.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Minigames/Pause Button.png" type="Texture" id=16]
+[ext_resource path="res://Minigames/ScoreScreen/scoreScreen.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Music/leisure-game-music.wav" type="AudioStream" id=18]
+[ext_resource path="res://Minigames/FallingFood/AudioStreamPlayer.gd" type="Script" id=19]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 651, 10 )
+
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 78.0575, -47.4508, 0, 0, 0, 0, 245.588, -53.2277, 0, 0, 0, 0, 445.854, -53.2277, 0, 0, 0, 0, 649.29, -52.5131, 0, 0, 0, 0, 911.105, -49.6201 )
+}
+
+[node name="Main_FF" type="Node2D"]
+
+[node name="GameWorld_FF" type="CanvasLayer" parent="."]
+editor/display_folded = true
+layer = 0
+script = ExtResource( 1 )
+pauseButton_node_path = NodePath("../UI_FF/pauseButton")
+timerLabel_node_path = NodePath("../UI_FF/timerLabel")
+Foods = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ]
+
+[node name="bg_FF" type="Sprite" parent="GameWorld_FF"]
+position = Vector2( 511.267, 299.2 )
+texture = ExtResource( 12 )
+
+[node name="Player_FF" parent="GameWorld_FF" instance=ExtResource( 13 )]
+collision_layer = 3
+score_screen_node_path = NodePath("../../UI_FF/scoreScreen")
+
+[node name="Ground_FF" type="Area2D" parent="GameWorld_FF"]
+editor/display_folded = true
+position = Vector2( 500, 589.556 )
+script = ExtResource( 14 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld_FF/Ground_FF"]
+position = Vector2( 0, 1 )
+shape = SubResource( 1 )
+
+[node name="FoodSpawn_FF" type="Path2D" parent="GameWorld_FF"]
+curve = SubResource( 2 )
+
+[node name="FoodSpawnTimer_FF" type="Timer" parent="GameWorld_FF"]
+wait_time = 2.5
+one_shot = true
+
+[node name="ScoresUI_FF" type="VBoxContainer" parent="GameWorld_FF"]
+editor/display_folded = true
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Score_FF" type="Label" parent="GameWorld_FF/ScoresUI_FF"]
+margin_right = 86.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Score: 0"
+
+[node name="Vegetable_Score_FF" type="Label" parent="GameWorld_FF/ScoresUI_FF"]
+margin_top = 18.0
+margin_right = 86.0
+margin_bottom = 32.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Vegetables: 0"
+
+[node name="Fruit_Score_FF" type="Label" parent="GameWorld_FF/ScoresUI_FF"]
+margin_top = 36.0
+margin_right = 86.0
+margin_bottom = 50.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Fruits: 0"
+
+[node name="CarbScore_FF" type="Label" parent="GameWorld_FF/ScoresUI_FF"]
+modulate = Color( 0, 0, 0, 1 )
+margin_top = 54.0
+margin_right = 86.0
+margin_bottom = 68.0
+text = "Carbs: 0"
+
+[node name="ProteinScore_FF" type="Label" parent="GameWorld_FF/ScoresUI_FF"]
+modulate = Color( 0, 0, 0, 1 )
+margin_top = 72.0
+margin_right = 86.0
+margin_bottom = 86.0
+text = "Proteins: 0"
+
+[node name="UI_FF" type="CanvasLayer" parent="."]
+editor/display_folded = true
+
+[node name="timerLabel" parent="UI_FF" instance=ExtResource( 15 )]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -551.353
+margin_top = 47.6471
+margin_right = -511.353
+margin_bottom = 87.6471
+seconds = 60
+
+[node name="pauseButton" type="TextureButton" parent="UI_FF"]
+margin_left = 940.0
+margin_top = 20.0
+margin_right = 1068.0
+margin_bottom = 148.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture_normal = ExtResource( 16 )
+
+[node name="scoreScreen" parent="UI_FF" instance=ExtResource( 17 )]
+visible = false
+gameName = "Falling Foods"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 18 )
+autoplay = true
+script = ExtResource( 19 )
+
+[connection signal="body_entered" from="GameWorld_FF/Ground_FF" to="GameWorld_FF/Ground_FF" method="_on_Ground_FF_body_entered"]
+[connection signal="timeout" from="GameWorld_FF/FoodSpawnTimer_FF" to="GameWorld_FF" method="_on_FoodSpawnTimer_FF_timeout"]
+[connection signal="timeout" from="UI_FF/timerLabel" to="GameWorld_FF/Player_FF" method="_on_timer_label_timeout"]
+[connection signal="pressed" from="UI_FF/pauseButton" to="GameWorld_FF" method="_on_pauseButton_pressed"]

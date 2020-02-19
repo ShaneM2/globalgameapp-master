@@ -1,0 +1,9 @@
+{
+    "0" : "res://play/ggMap.png",
+    "1" : {"name":"Sir Stan", "image":"res://troll.png",
+           "text":"Eating fruits and vegetables is a good way to get energy and vitamins!"},
+    "2" : {"name":"Sir Stan", "image":"res://troll.png",
+           "text":"Do you know your fruits and vegetables? Some might surprise you!"},
+    "3" : {"name":"Sir Stan", "image":"res://troll.png",
+           "text":"Try to categorize the fruits or vegetables based off of the picture by tapping the correct button."}
+}

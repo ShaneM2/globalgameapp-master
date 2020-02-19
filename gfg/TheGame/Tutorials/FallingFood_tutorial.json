@@ -1,0 +1,13 @@
+{
+    "0" : "res://Minigames/FallingFood/Kitchen.png",
+    "1" : {"name":"Sir Stan", "image":"res://Stan_Smile_Stripe.png",
+           "text":"Eating balanced meals is very important."},
+    "2" : {"name":"Sir Stan", "image":"res://Stan_Smile_Stripe.png",
+           "text":"Proteins like meat and eggs help you build strong muscles.\n Fruits and vegetables give you energy and can help you to not get sick"},
+    "3" : {"name": "Sir Stan", "image":"res://Stan_Smile_Stripe.png",
+           "text":"Carbs like potatoes and whole wheat bread can also give you energy."},
+    "4" : {"name": "Sir Stan", "image":"res://Stan_Smile_Stripe.png",
+           "text":"Having a balanced meal with proteins, carbs, fruits, and vegetables can help you live a healthy lifestyle."},
+    "5" : {"name":"Sir Stan", "image":"res://Stan_Smile_Stripe.png",
+           "text":"Try to catch a balanced meal from the falling foods by tapping in the direction that you would like the basket to go."}
+}

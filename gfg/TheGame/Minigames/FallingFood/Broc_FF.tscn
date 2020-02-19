@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Minigames/FallingFood/Food_FF.gd" type="Script" id=1]
+[ext_resource path="res://Minigames/FallingFood/Broc.png" type="Texture" id=2]
+
+[node name="Food_FF" type="RigidBody2D"]
+position = Vector2( 469.228, 247.465 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+food_type = "Vegetable"
+
+[node name="Food_Sprite_FF" type="Sprite" parent="."]
+position = Vector2( 40.9692, 61.4536 )
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( 31.8309, 22.6141 )
+scale = Vector2( 0.5, 0.5 )
+polygon = PoolVector2Array( -43.9342, -3.7345, -45.6725, 12.4891, -42.5823, 26.3951, -32.3459, 33.9275, -19.792, 37.4039, -18.0537, 60.3874, -21.1439, 82.4051, 11.4964, 82.212, 11.4964, 68.8855, 13.4278, 52.6619, 19.6082, 33.1549, 28.6857, 36.6314, 47.6133, 25.4294, 51.6692, 8.04694, 46.8407, 0.321411, 38.3426, -18.2198, 29.2651, -27.6836, 8.86966, -29.5765, 2.10983, -25.9069, -7.93335, -30.1559, -23.3844, -24.5549, -38.256, -14.3186 )

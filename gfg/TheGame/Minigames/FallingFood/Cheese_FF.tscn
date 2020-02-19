@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Minigames/FallingFood/Food_FF.gd" type="Script" id=1]
+[ext_resource path="res://Minigames/FallingFood/Cheese.png" type="Texture" id=2]
+
+[node name="Food_FF" type="RigidBody2D"]
+position = Vector2( 454.279, 84.394 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+food_type = "Protein"
+
+[node name="Food_Sprite_FF" type="Sprite" parent="."]
+position = Vector2( -51.6912, 18.0319 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( 22.1149, -16.8363 )
+rotation = 0.0523599
+scale = Vector2( 2, 2 )
+polygon = PoolVector2Array( 18.5427, -14.0465, -0.301727, 0.146645, 0.249481, 14.8639, 32.9544, 8.96819, 32.4377, -5.09064, 26.5938, -11.6072 )

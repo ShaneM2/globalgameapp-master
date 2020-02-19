@@ -1,0 +1,159 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Minigames/LabelingGame/LabelingGame.gd" type="Script" id=1]
+[ext_resource path="res://Minigames/LabelingGame/questionHolder.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Minigames/LabelingGame/background.png" type="Texture" id=3]
+[ext_resource path="res://Minigames/Pause Button.png" type="Texture" id=4]
+[ext_resource path="res://Minigames/LabelingGame/cuttingBoard.png" type="Texture" id=5]
+[ext_resource path="res://Minigames/timer_label.tscn" type="PackedScene" id=6]
+[ext_resource path="res://title_screen/fonts/montserrat25.tres" type="DynamicFont" id=7]
+[ext_resource path="res://title_screen/fonts/montserrat60.tres" type="DynamicFont" id=8]
+[ext_resource path="res://Minigames/LabelingGame/answer.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Minigames/ScoreScreen/scoreScreen.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Music/super-jumper-game.wav" type="AudioStream" id=11]
+[ext_resource path="res://Minigames/LabelingGame/AudioStreamPlayer.gd" type="Script" id=12]
+
+[node name="LabelingGame" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+image_name_node_path = NodePath("TextureRect/VBoxContainer/VBoxContainer/imageName")
+image_node_path = NodePath("TextureRect/VBoxContainer/Image")
+button_one_node_path = NodePath("TextureRect/VBoxContainer/Buttons/Btn1")
+button_two_node_path = NodePath("TextureRect/VBoxContainer/Buttons/Btn2")
+question_node_path = NodePath("questionHolder")
+current_score_node_path = NodePath("TextureRect/currentScore")
+button_one_label_node_path = NodePath("TextureRect/VBoxContainer/Buttons/Btn1/Btn1Label")
+button_two_label_node_path = NodePath("TextureRect/VBoxContainer/Buttons/Btn2/Btn2Label")
+timer_label_node_path = NodePath("TextureRect/VBoxContainer/VBoxContainer/timer_label")
+
+[node name="questionHolder" parent="." instance=ExtResource( 2 )]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 1023.0
+margin_bottom = 600.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="pauseButton" type="TextureButton" parent="TextureRect"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -84.0
+margin_top = 20.0
+margin_right = 44.0
+margin_bottom = 148.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture_normal = ExtResource( 4 )
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect"]
+margin_left = 250.0
+margin_top = 135.0
+margin_right = 890.0
+margin_bottom = 535.0
+rect_scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 5 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect"]
+editor/display_folded = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 80.0
+margin_top = 40.0
+margin_right = -80.0
+margin_bottom = -60.0
+custom_constants/separation = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/VBoxContainer"]
+margin_right = 863.0
+margin_bottom = 76.0
+custom_constants/separation = 20
+
+[node name="timer_label" parent="TextureRect/VBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
+anchor_left = 0.0
+anchor_right = 0.0
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 863.0
+margin_bottom = 25.0
+seconds = 3
+
+[node name="imageName" type="Label" parent="TextureRect/VBoxContainer/VBoxContainer"]
+margin_top = 45.0
+margin_right = 863.0
+margin_bottom = 76.0
+custom_fonts/font = ExtResource( 7 )
+align = 1
+
+[node name="Image" type="TextureRect" parent="TextureRect/VBoxContainer"]
+margin_top = 116.0
+margin_right = 863.0
+margin_bottom = 370.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch_mode = 4
+
+[node name="Buttons" type="HBoxContainer" parent="TextureRect/VBoxContainer"]
+margin_top = 410.0
+margin_right = 863.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 0, 90 )
+size_flags_horizontal = 3
+size_flags_vertical = 0
+custom_constants/separation = 40
+alignment = 1
+
+[node name="Btn1" type="Button" parent="TextureRect/VBoxContainer/Buttons"]
+margin_right = 411.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 0, 90 )
+rect_pivot_offset = Vector2( -659.594, -406.349 )
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="Btn1Label" type="Label" parent="TextureRect/VBoxContainer/Buttons/Btn1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.848785
+margin_right = 0.848785
+custom_fonts/font = ExtResource( 8 )
+align = 1
+valign = 1
+
+[node name="Btn2" type="Button" parent="TextureRect/VBoxContainer/Buttons"]
+margin_left = 451.0
+margin_right = 863.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 0, 75 )
+rect_pivot_offset = Vector2( -659.594, -406.349 )
+size_flags_horizontal = 3
+
+[node name="Btn2Label" type="Label" parent="TextureRect/VBoxContainer/Buttons/Btn2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 8 )
+align = 1
+valign = 1
+
+[node name="currentScore" type="Label" parent="TextureRect"]
+margin_left = 50.0
+margin_top = 50.0
+margin_right = 250.0
+margin_bottom = 125.0
+custom_fonts/font = ExtResource( 7 )
+
+[node name="answer" parent="." instance=ExtResource( 9 )]
+visible = false
+
+[node name="scoreScreen" parent="." instance=ExtResource( 10 )]
+visible = false
+gameName = "Sir Stan's Snacks"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+autoplay = true
+script = ExtResource( 12 )
+[connection signal="pressed" from="TextureRect/pauseButton" to="." method="_on_pauseButton_pressed"]
+[connection signal="timeout" from="TextureRect/VBoxContainer/VBoxContainer/timer_label" to="." method="_on_timer_label_timeout"]
+[connection signal="pressed" from="TextureRect/VBoxContainer/Buttons/Btn1" to="." method="_on_Button1_pressed"]
+[connection signal="pressed" from="TextureRect/VBoxContainer/Buttons/Btn2" to="." method="_on_Button2_pressed"]
+[connection signal="answerFinished" from="answer" to="." method="_on_answer_answerFinished"]

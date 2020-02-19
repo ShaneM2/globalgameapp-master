@@ -1,0 +1,167 @@
+[gd_scene load_steps=16 format=2]
+
+
+[ext_resource path="res://Minigames/SoccerGame/soccer_scene.gd" type="Script" id=1]
+[ext_resource path="res://Minigames/SoccerGame/half_field.png" type="Texture" id=2]
+[ext_resource path="res://Minigames/SoccerGame/Path2D.gd" type="Script" id=3]
+[ext_resource path="res://Minigames/SoccerGame/block.png" type="Texture" id=4]
+[ext_resource path="res://Minigames/SoccerGame/soccer_ball.gd" type="Script" id=5]
+[ext_resource path="res://Minigames/SoccerGame/ball.png" type="Texture" id=6]
+[ext_resource path="res://Minigames/SoccerGame/soccer_ball_kick.wav" type="AudioStream" id=7]
+[ext_resource path="res://Minigames/SoccerGame/goal.png" type="Texture" id=8]
+[ext_resource path="res://title_screen/fonts/montserrat25.tres" type="DynamicFont" id=9]
+[ext_resource path="res://Minigames/timer_label.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Minigames/ScoreScreen/scoreScreen.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Minigames/pauseScreen.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Minigames/Pause Button.png" type="Texture" id=13]
+[ext_resource path="res://Music/win-the-day.wav" type="AudioStream" id=14]
+[ext_resource path="res://Minigames/SoccerGame/AudioStreamPlayer.gd" type="Script" id=15]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 298.53, 98.5358, 0, 0, 0, 0, 717.367, 97.4278, 0, 0, 0, 0, 300.032, 97.6058 )
+}
+
+[sub_resource type="RectangleShape2D" id=2]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 9.10304, 0.652036 )
+
+[sub_resource type="CanvasItemMaterial" id=4]
+
+[sub_resource type="CircleShape2D" id=5]
+
+[node name="SoccerGame" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="GameWorld_GS" type="CanvasLayer" parent="."]
+
+[node name="half_field" type="Sprite" parent="GameWorld_GS"]
+position = Vector2( 509, 299 )
+rotation = 3.14049
+scale = Vector2( 2.86592, 2.4 )
+texture = ExtResource( 2 )
+
+[node name="Path2D" type="Path2D" parent="GameWorld_GS"]
+editor/display_folded = true
+position = Vector2( 0.634766, 8.74738 )
+curve = SubResource( 1 )
+script = ExtResource( 3 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="GameWorld_GS/Path2D"]
+editor/display_folded = true
+position = Vector2( 298.53, 98.5358 )
+rotate = false
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="GameWorld_GS/Path2D/PathFollow2D"]
+editor/display_folded = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="GameWorld_GS/Path2D/PathFollow2D/KinematicBody2D"]
+scale = Vector2( 5.73, 2.31 )
+shape = SubResource( 2 )
+
+[node name="block" type="Sprite" parent="GameWorld_GS/Path2D/PathFollow2D/KinematicBody2D"]
+position = Vector2( 1.36032, 2.72076 )
+rotation = -3.14159
+scale = Vector2( 0.08, -0.05 )
+texture = ExtResource( 4 )
+
+[node name="Area2D" type="Area2D" parent="GameWorld_GS"]
+editor/display_folded = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GameWorld_GS/Area2D"]
+polygon = PoolVector2Array( -4.26166, -3.58096, -2.59146, 596.015, 1021.23, 591.004, 1019.56, -6.92133, 10.77, -3.58096, 10.77, -28.6337, 1069.67, -26.9635, 1066.33, 609.376, -34.325, 609.376, -27.6442, -33.6443, -0.921295, -31.9741 )
+
+[node name="goal_line" type="Area2D" parent="GameWorld_GS"]
+editor/display_folded = true
+position = Vector2( 508.903, -65.9679 )
+scale = Vector2( 23.2, 12 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld_GS/goal_line"]
+position = Vector2( 0.166763, 7.67334 )
+shape = SubResource( 3 )
+
+[node name="soccer_ball" type="RigidBody2D" parent="GameWorld_GS"]
+editor/display_folded = true
+material = SubResource( 4 )
+position = Vector2( 506.197, 559.849 )
+gravity_scale = 0.0
+contacts_reported = 1
+contact_monitor = true
+script = ExtResource( 5 )
+score_screen_node_path = NodePath("../../UI_GS/scoreScreen")
+
+[node name="soccer_ball_sprite" type="Sprite" parent="GameWorld_GS/soccer_ball"]
+position = Vector2( -7.94971, 1.51563 )
+scale = Vector2( 0.129728, 0.128635 )
+texture = ExtResource( 6 )
+
+[node name="soccer_ball_shape" type="CollisionShape2D" parent="GameWorld_GS/soccer_ball"]
+scale = Vector2( 3, 3 )
+shape = SubResource( 5 )
+
+[node name="soccer_kick" type="AudioStreamPlayer" parent="GameWorld_GS/soccer_ball"]
+stream = ExtResource( 7 )
+
+[node name="goal_net" type="RigidBody2D" parent="GameWorld_GS"]
+editor/display_folded = true
+position = Vector2( 498.032, -44.3169 )
+mass = 65535.0
+gravity_scale = 0.0
+contacts_reported = 1
+contact_monitor = true
+
+[node name="goal_shape" type="CollisionPolygon2D" parent="GameWorld_GS/goal_net"]
+position = Vector2( 9.33081, -9.33081 )
+scale = Vector2( 23.2, 12 )
+polygon = PoolVector2Array( -8.84069, -4.71439, -9.27939, 0.317467, -9.34098, 9.92298, -8.84069, 9.92298, -8.9074, 0.573119, 9.40322, 1.02449, 9.30316, 10.3744, 9.80345, 10.3099, 9.90351, 0.186227, 9.10304, -4.77887 )
+
+[node name="soccer_goal" type="Sprite" parent="GameWorld_GS/goal_net"]
+position = Vector2( 14.3957, 52.0336 )
+scale = Vector2( 0.504301, 0.406007 )
+texture = ExtResource( 8 )
+
+[node name="UI_GS" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="UI_GS"]
+margin_left = 9.16824
+margin_top = 13.8336
+margin_right = 160.168
+margin_bottom = 53.8336
+size_flags_horizontal = 3
+size_flags_vertical = 7
+size_flags_stretch_ratio = 0.0
+custom_fonts/font = ExtResource( 9 )
+text = "Score: 0"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="timer_label" parent="UI_GS" instance=ExtResource( 10 )]
+margin_left = -1003.2
+margin_top = 34.5113
+margin_right = -963.196
+margin_bottom = 74.5113
+seconds = 30
+
+[node name="scoreScreen" parent="UI_GS" instance=ExtResource( 11 )]
+visible = false
+gameName = "Sir Stanley's Goalie Shootout"
+
+[node name="pause_button" type="TextureButton" parent="UI_GS"]
+margin_left = 936.959
+margin_top = 17.2942
+margin_right = 1064.96
+margin_bottom = 145.294
+rect_scale = Vector2( 0.5, 0.5 )
+texture_normal = ExtResource( 13 )
+[connection signal="body_entered" from="GameWorld_GS/Area2D" to="GameWorld_GS/soccer_ball" method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="GameWorld_GS/goal_line" to="GameWorld_GS/soccer_ball" method="_on_goal_line_body_entered"]
+[connection signal="body_entered" from="GameWorld_GS/goal_net" to="GameWorld_GS/soccer_ball" method="_on_goal_net_body_entered"]
+[connection signal="timeout" from="UI_GS/timer_label" to="GameWorld_GS/soccer_ball" method="_on_timer_label_timeout"]
+[connection signal="pressed" from="UI_GS/pause_button" to="GameWorld_GS/soccer_ball" method="_on_pause_button_pressed"]
+[connection signal="pressed" from="UI_GS/pause_button" to="." method="_on_pause_button_pressed"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+autoplay = true
+script = ExtResource( 15 )

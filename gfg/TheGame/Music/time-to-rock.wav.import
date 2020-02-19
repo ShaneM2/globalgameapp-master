@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/time-to-rock.wav-344c077cbc4b78ed400dccd217e16825.sample"
+
+[deps]
+
+source_file="res://Music/time-to-rock.wav"
+dest_files=[ "res://.import/time-to-rock.wav-344c077cbc4b78ed400dccd217e16825.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=true
+compress/mode=0

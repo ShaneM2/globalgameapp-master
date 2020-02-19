@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Minigames/FallingFood/Food_FF.gd" type="Script" id=1]
+[ext_resource path="res://Minigames/FallingFood/Egg.png" type="Texture" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 12.767
+height = 45.9524
+
+[node name="Food_FF" type="RigidBody2D"]
+position = Vector2( 456.349, 71.2117 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+food_type = "Protein"
+
+[node name="Food_Sprite_FF" type="Sprite" parent="."]
+position = Vector2( 4.14604, 19.6551 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 2.73578, -12.6666 )
+rotation = 1.5708
+shape = SubResource( 1 )

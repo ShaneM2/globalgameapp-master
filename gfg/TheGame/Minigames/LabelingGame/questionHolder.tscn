@@ -1,0 +1,96 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Minigames/LabelingGame/question.gd" type="Script" id=1]
+
+[node name="questionHolder" type="Node"]
+
+[node name="banana" type="Node" parent="."]
+script = ExtResource( 1 )
+image_name = "Banana"
+image_path = "res://Minigames/LabelingGame/bananas.png"
+answer = true
+btn1Text = "Fruit"
+btn2Text = "Vegetable"
+
+[node name="apple" type="Node" parent="."]
+script = ExtResource( 1 )
+image_name = "Apple"
+image_path = "res://Minigames/LabelingGame/apple.png"
+btn1Text = "Vegetable"
+btn2Text = "Fruit"
+
+[node name="avocado" type="Node" parent="."]
+script = ExtResource( 1 )
+image_name = "Avocado"
+image_path = "res://Minigames/LabelingGame/avocado.png"
+btn1Text = "Vegetable"
+btn2Text = "Fruit"
+
+[node name="olive" type="Node" parent="."]
+script = ExtResource( 1 )
+image_name = "Olive"
+image_path = "res://Minigames/LabelingGame/olive.png"
+btn1Text = "Vegetable"
+btn2Text = "Fruit"
+
+[node name="watermelon" type="Node" parent="."]
+script = ExtResource( 1 )
+image_name = "Watermelon"
+image_path = "res://Minigames/LabelingGame/watermelon.png"
+answer = true
+btn1Text = "Fruit"
+btn2Text = "Vegetable"
+
+[node name="tomato" type="Node" parent="."]
+script = ExtResource( 1 )
+image_name = "Tomato"
+image_path = "res://Minigames/LabelingGame/tomato.png"
+answer = true
+btn1Text = "Fruit"
+btn2Text = "Vegetable"
+
+[node name="potato" type="Node" parent="."]
+script = ExtResource( 1 )
+image_name = "Potato"
+image_path = "res://Minigames/LabelingGame/potato.png"
+answer = true
+btn1Text = "Vegetable"
+btn2Text = "Fruit"
+
+[node name="broccoli" type="Node" parent="."]
+script = ExtResource( 1 )
+image_name = "Broccoli"
+image_path = "res://Minigames/LabelingGame/broccoli.png"
+btn1Text = "Fruit"
+btn2Text = "Vegetable"
+
+[node name="pineapple" type="Node" parent="."]
+script = ExtResource( 1 )
+image_name = "Pineapple"
+image_path = "res://Minigames/LabelingGame/pineapple.png"
+answer = true
+btn1Text = "Fruit"
+btn2Text = "Vegetable"
+
+[node name="lemon" type="Node" parent="."]
+script = ExtResource( 1 )
+image_name = "Lemon"
+image_path = "res://Minigames/LabelingGame/lemon.png"
+btn1Text = "Vegetable"
+btn2Text = "Fruit"
+
+[node name="strawberry" type="Node" parent="."]
+script = ExtResource( 1 )
+image_name = "Strawberry"
+image_path = "res://Minigames/LabelingGame/strawberry.png"
+answer = true
+btn1Text = "Fruit"
+btn2Text = "Vegetable"
+
+[node name="carrot" type="Node" parent="."]
+script = ExtResource( 1 )
+image_name = "Carrot"
+image_path = "res://Minigames/LabelingGame/carrot.png"
+answer = true
+btn1Text = "Vegetable"
+btn2Text = "Fruit"

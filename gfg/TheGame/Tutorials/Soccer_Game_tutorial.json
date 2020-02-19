@@ -1,0 +1,8 @@
+{
+    "0" : "res://Minigames/SoccerGame/half_field.png",
+    "1" : {"name":"Sir Stan", "image":"res://troll.png", "text":"Getting 60 minutes of exercise a day is important for your heart health. Soccer is my favorite way to exercise!"},
+    "2" : {"name":"Sir Stan", "image":"res://troll.png", "text":"The goal of this mini game is just that! To Score Goals!"},
+	"3" : {"name":"Sir Stan", "image":"res://troll.png", "text":"Simply tap where you want to kick the ball and it will be kicked in that direction!"},
+	"4" : {"name":"Sir Stan", "image":"res://troll.png", "text":"Be sure to not to kick the ball into the goalie or to miss the goal!"},
+	"5" : {"name":"Sir Stan", "image":"res://troll.png", "text":"You have 1 minute to make as many goals as you can!"}
+}

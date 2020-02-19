@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Minigames/FallingFood/Food_FF.gd" type="Script" id=1]
+[ext_resource path="res://Minigames/FallingFood/carrot.png" type="Texture" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 27.6048
+height = 88.6211
+
+[node name="Food_FF" type="RigidBody2D"]
+position = Vector2( 400.066, 14.8551 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+food_type = "Vegetable"
+
+[node name="Food_Sprite_FF" type="Sprite" parent="."]
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -18.9106, -8.66483 )
+rotation = -0.122173
+scale = Vector2( 0.5, 0.5 )
+shape = SubResource( 1 )

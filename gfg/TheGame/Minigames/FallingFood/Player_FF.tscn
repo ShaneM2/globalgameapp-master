@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Minigames/FallingFood/Player_FF.gd" type="Script" id=1]
+[ext_resource path="res://Minigames/FallingFood/Basket_FF.png" type="Texture" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 10.2127
+height = 120.563
+
+[node name="Player_FF" type="KinematicBody2D"]
+position = Vector2( 408.954, 515.87 )
+script = ExtResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -62.7754, 33.7877, -39.2692, 40.3062, -3.71365, 43.8618, 27.4962, 43.4667, 65.6197, 35.9606, 92.4839, 0.997604, 96.4345, -11.4468, 93.6691, -18.1629, 62.2616, 30.6272, 25.916, 36.3556, -4.89885, 36.5532, -40.2569, 32.6025, -63.1704, 26.6766, -87.4667, -2.1629, -89.2445, -14.8049, -93.7877, -7.10117, -90.4297, 3.36797 )
+
+[node name="Player_Sprite_FF" type="Sprite" parent="."]
+scale = Vector2( 0.33, 0.33 )
+texture = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 6.19696, 14.2884 )
+rotation = -1.5708
+shape = SubResource( 1 )
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
